@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
+	[SerializeField] float rcsThrust = 5f;
+
 	//config
 	Rigidbody myRigidbody;
+	
 
     // Start is called before the first frame update
     void Start()
@@ -30,12 +33,12 @@ public class Rocket : MonoBehaviour
 
 		if (Input.GetKey(KeyCode.A))
 		{
-			print("rotate Left");
+			transform.Rotate(Vector3.forward * (Time.deltaTime* rcsThrust));
 		}
 
 		else if (Input.GetKey(KeyCode.D))
 		{
-			print("rotate Right");
+		transform.Rotate(-Vector3.forward*(Time.deltaTime * rcsThrust));
 		}
 	}
 }
