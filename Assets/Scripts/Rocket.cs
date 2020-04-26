@@ -2,19 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
+	
 	[SerializeField] float rcsThrust = 100f;
 	[SerializeField] float mainThrust = 1000f;
 
 	//config
 	Rigidbody myRigidbody;
 	AudioSource audioSource;
-	
 
-    // Start is called before the first frame update
-    void Start()
+	//STATES
+	enum State { ALIVE, DEAD, TRANSENCDING }
+	State state = State.ALIVE;
+
+	// Start is called before the first frame update
+	void Start()
     {
 		myRigidbody = GetComponent<Rigidbody>();
 		audioSource = GetComponent<AudioSource>();
@@ -24,8 +29,12 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		Thrust();
-		Rotate();
+		if(state==State.ALIVE)
+		{
+		 Thrust();
+		 Rotate();
+		}
+		
 	}
 
 	private void Rotate()
@@ -64,27 +73,34 @@ public class Rocket : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		/*var OtherObject = collision.gameObject;
-
-		if(OtherObject.tag != "Friendly")
-		{
-			Debug.Log("dead");
-		}												my code
-
-		else
-		{
-			Debug.Log("all good");
-		}*/
+		if(state != State.ALIVE) { return; } // so it won't get called more than 1
 
 		switch (collision.gameObject.tag)
 		{
 			case "Friendly":
 				//do noting
 				break;
+
+			case "Finish":
+				state = State.TRANSENCDING;
+				Invoke("LoadNextScene", 1f);
+				break;
+
 			default:
-				Debug.Log("dead");
+				state = State.DEAD;
+				Invoke("LoadFirstScene", 2f);
 				break;
 
 		}
+	}
+
+	private void LoadNextScene()
+	{
+		SceneManager.LoadScene(1);
+	}
+
+	private void LoadFirstScene()
+	{
+		SceneManager.LoadScene(0);
 	}
 }
