@@ -26,7 +26,7 @@ public class Rocket : MonoBehaviour
     {
 		Thrust();
 		Rotate();
-    }
+	}
 
 	private void Rotate()
 	{
@@ -58,6 +58,32 @@ public class Rocket : MonoBehaviour
 				audioSource.Play();
 			}
 			
+
+		}
+	}
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		/*var OtherObject = collision.gameObject;
+
+		if(OtherObject.tag != "Friendly")
+		{
+			Debug.Log("dead");
+		}												my code
+
+		else
+		{
+			Debug.Log("all good");
+		}*/
+
+		switch (collision.gameObject.tag)
+		{
+			case "Friendly":
+				//do noting
+				break;
+			default:
+				Debug.Log("dead");
+				break;
 
 		}
 	}

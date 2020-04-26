@@ -270,7 +270,7 @@ PrefabInstance:
     - target: {fileID: 8554448923183754428, guid: cc0094ba3a7df7543a4e94255adfe39f,
         type: 3}
       propertyPath: m_Name
-      value: Launch Pad (1)
+      value: Pad 2
       objectReference: {fileID: 0}
     - target: {fileID: 8554448923183754431, guid: cc0094ba3a7df7543a4e94255adfe39f,
         type: 3}
@@ -369,17 +369,17 @@ PrefabInstance:
     - target: {fileID: 2681460501824195030, guid: 46f75acb837cbaa4780ec284f6df2d2a,
         type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 3.0092666e-36
+      value: 2.03e-42
       objectReference: {fileID: 0}
     - target: {fileID: 2681460501824195030, guid: 46f75acb837cbaa4780ec284f6df2d2a,
         type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 6.617445e-24
+      value: 1.01e-43
       objectReference: {fileID: 0}
     - target: {fileID: 2681460501824195030, guid: 46f75acb837cbaa4780ec284f6df2d2a,
         type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 0
+      value: 980710.94
       objectReference: {fileID: 0}
     - target: {fileID: 2681460501824195030, guid: 46f75acb837cbaa4780ec284f6df2d2a,
         type: 3}
@@ -578,11 +578,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Launch Pad
-      objectReference: {fileID: 0}
-    - target: {fileID: 8554448923183754431, guid: cc0094ba3a7df7543a4e94255adfe39f,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc0094ba3a7df7543a4e94255adfe39f, type: 3}
