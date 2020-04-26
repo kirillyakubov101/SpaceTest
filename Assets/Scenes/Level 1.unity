@@ -134,6 +134,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 205261802, guid: 64c202ba44e27b04db24bf6f2a2f8701, type: 3}
+      propertyPath: EngineSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: fdd959c62c757b543adbaf654620cfd2, type: 3}
+    - target: {fileID: 205261802, guid: 64c202ba44e27b04db24bf6f2a2f8701, type: 3}
+      propertyPath: DeathSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: ef7bca2feafae454193cb99b25a876c6, type: 3}
+    - target: {fileID: 205261802, guid: 64c202ba44e27b04db24bf6f2a2f8701, type: 3}
+      propertyPath: WinSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: c8ec3db1ab00b2341a7fdf7532a1a2a2, type: 3}
+    - target: {fileID: 205261803, guid: 64c202ba44e27b04db24bf6f2a2f8701, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3887332874446394930, guid: 64c202ba44e27b04db24bf6f2a2f8701,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -254,12 +270,12 @@ PrefabInstance:
     - target: {fileID: 1364643929379542382, guid: 4b0a518a14d4d924689535b76b527df6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.14
+      value: 3.59
       objectReference: {fileID: 0}
     - target: {fileID: 1364643929379542382, guid: 4b0a518a14d4d924689535b76b527df6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.59
+      value: 17.58
       objectReference: {fileID: 0}
     - target: {fileID: 1364643929379542382, guid: 4b0a518a14d4d924689535b76b527df6,
         type: 3}
@@ -446,12 +462,12 @@ PrefabInstance:
     - target: {fileID: 1364643929379542382, guid: 4b0a518a14d4d924689535b76b527df6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.6
+      value: 8.99
       objectReference: {fileID: 0}
     - target: {fileID: 1364643929379542382, guid: 4b0a518a14d4d924689535b76b527df6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.1
+      value: 17.45
       objectReference: {fileID: 0}
     - target: {fileID: 1364643929379542382, guid: 4b0a518a14d4d924689535b76b527df6,
         type: 3}
@@ -1028,7 +1044,7 @@ PrefabInstance:
     - target: {fileID: 2681460501824195030, guid: 46f75acb837cbaa4780ec284f6df2d2a,
         type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 2.3822802e-21
+      value: 2.3937171e-21
       objectReference: {fileID: 0}
     - target: {fileID: 2681460501824195030, guid: 46f75acb837cbaa4780ec284f6df2d2a,
         type: 3}

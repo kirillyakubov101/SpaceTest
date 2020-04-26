@@ -9,6 +9,9 @@ public class Rocket : MonoBehaviour
 	
 	[SerializeField] float rcsThrust = 100f;
 	[SerializeField] float mainThrust = 1000f;
+	[SerializeField] AudioClip EngineSFX;
+	[SerializeField] AudioClip DeathSFX;
+	[SerializeField] AudioClip WinSFX;
 
 	//config
 	Rigidbody myRigidbody;
@@ -64,7 +67,7 @@ public class Rocket : MonoBehaviour
 			myRigidbody.AddRelativeForce(Vector3.up * RotationThisFrame);
 			if (audioSource.isPlaying == false)
 			{
-				audioSource.Play();
+				audioSource.PlayOneShot(EngineSFX);
 			}
 			
 
@@ -83,11 +86,15 @@ public class Rocket : MonoBehaviour
 
 			case "Finish":
 				state = State.TRANSENCDING;
+				audioSource.Stop();
+				audioSource.PlayOneShot(WinSFX);
 				Invoke("LoadNextScene", 1f);
 				break;
 
 			default:
 				state = State.DEAD;
+				audioSource.Stop();
+				audioSource.PlayOneShot(DeathSFX);
 				Invoke("LoadFirstScene", 2f);
 				break;
 
