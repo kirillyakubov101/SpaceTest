@@ -6,12 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
-	
+	[Header("Speed")]
 	[SerializeField] float rcsThrust = 100f;
 	[SerializeField] float mainThrust = 1000f;
+	[Header("Sounds")]
 	[SerializeField] AudioClip EngineSFX;
 	[SerializeField] AudioClip DeathSFX;
 	[SerializeField] AudioClip WinSFX;
+	[Header("Particles")]
+	[SerializeField] ParticleSystem DeathVFX;
+	[SerializeField] ParticleSystem WinVFX;
+	[SerializeField] ParticleSystem EngineVFX;
 
 	//config
 	Rigidbody myRigidbody;
@@ -26,7 +31,6 @@ public class Rocket : MonoBehaviour
     {
 		myRigidbody = GetComponent<Rigidbody>();
 		audioSource = GetComponent<AudioSource>();
-
 	}
 
     // Update is called once per frame
@@ -36,8 +40,7 @@ public class Rocket : MonoBehaviour
 		{
 		 Thrust();
 		 Rotate();
-		}
-		
+		}	
 	}
 
 	private void Rotate()
@@ -65,11 +68,11 @@ public class Rocket : MonoBehaviour
 		if (Input.GetKey(KeyCode.Space))
 		{
 			myRigidbody.AddRelativeForce(Vector3.up * RotationThisFrame);
+			EngineVFX.Play();
 			if (audioSource.isPlaying == false)
 			{
 				audioSource.PlayOneShot(EngineSFX);
 			}
-			
 
 		}
 	}
@@ -85,20 +88,34 @@ public class Rocket : MonoBehaviour
 				break;
 
 			case "Finish":
-				state = State.TRANSENCDING;
-				audioSource.Stop();
-				audioSource.PlayOneShot(WinSFX);
-				Invoke("LoadNextScene", 1f);
+				HandleWin();
 				break;
 
 			default:
-				state = State.DEAD;
-				audioSource.Stop();
-				audioSource.PlayOneShot(DeathSFX);
-				Invoke("LoadFirstScene", 2f);
+				HandleDeath();
 				break;
 
 		}
+	}
+
+	private void HandleWin()
+	{
+		state = State.TRANSENCDING;
+		audioSource.Stop();
+		EngineVFX.Stop();
+		WinVFX.Play();
+		audioSource.PlayOneShot(WinSFX);
+		Invoke("LoadNextScene", 3f);
+	}
+
+	private void HandleDeath()
+	{
+		state = State.DEAD;
+		audioSource.Stop();
+		EngineVFX.Stop();
+		DeathVFX.Play();
+		audioSource.PlayOneShot(DeathSFX);
+		Invoke("LoadFirstScene", 2f);
 	}
 
 	private void LoadNextScene()
