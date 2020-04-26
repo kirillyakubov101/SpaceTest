@@ -9,12 +9,14 @@ public class Rocket : MonoBehaviour
 
 	//config
 	Rigidbody myRigidbody;
+	AudioSource audioSource;
 	
 
     // Start is called before the first frame update
     void Start()
     {
 		myRigidbody = GetComponent<Rigidbody>();
+		audioSource = GetComponent<AudioSource>();
 
 	}
 
@@ -29,6 +31,15 @@ public class Rocket : MonoBehaviour
 		if (Input.GetKey(KeyCode.Space))
 		{
 			myRigidbody.AddRelativeForce(Vector3.up);
+			if (!audioSource.isPlaying)
+			{
+				audioSource.Play();
+			}
+			else
+			{
+				audioSource.Stop();
+			}
+			
 		}
 
 		if (Input.GetKey(KeyCode.A))
