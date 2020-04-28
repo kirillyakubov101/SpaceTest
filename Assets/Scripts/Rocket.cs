@@ -17,6 +17,8 @@ public class Rocket : MonoBehaviour
 	[SerializeField] ParticleSystem DeathVFX;
 	[SerializeField] ParticleSystem WinVFX;
 	[SerializeField] ParticleSystem EngineVFX;
+	[Header("Other")]
+	[SerializeField] float LevelLoadDelay = 3f;
 
 	//config
 	Rigidbody myRigidbody;
@@ -105,7 +107,7 @@ public class Rocket : MonoBehaviour
 		EngineVFX.Stop();
 		WinVFX.Play();
 		audioSource.PlayOneShot(WinSFX);
-		Invoke("LoadNextScene", 3f);
+		Invoke("LoadNextScene", LevelLoadDelay);
 	}
 
 	private void HandleDeath()
@@ -115,7 +117,7 @@ public class Rocket : MonoBehaviour
 		EngineVFX.Stop();
 		DeathVFX.Play();
 		audioSource.PlayOneShot(DeathSFX);
-		Invoke("LoadFirstScene", 2f);
+		Invoke("LoadFirstScene", LevelLoadDelay);
 	}
 
 	private void LoadNextScene()
