@@ -443,14 +443,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70290f757ee242449ba31899d8eb10a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rcsThrust: 250
-  mainThrust: 1000
+  rcsThrust: 300
+  mainThrust: 2000
   EngineSFX: {fileID: 8300000, guid: fdd959c62c757b543adbaf654620cfd2, type: 3}
   DeathSFX: {fileID: 8300000, guid: ef7bca2feafae454193cb99b25a876c6, type: 3}
   WinSFX: {fileID: 8300000, guid: c8ec3db1ab00b2341a7fdf7532a1a2a2, type: 3}
   DeathVFX: {fileID: 198204746853003829}
   WinVFX: {fileID: 198631065873355325}
   EngineVFX: {fileID: 198100718373929297}
+  LevelLoadDelay: 3
 --- !u!1 &3887332875161882181
 GameObject:
   m_ObjectHideFlags: 0
