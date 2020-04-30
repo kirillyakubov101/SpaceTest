@@ -27,22 +27,29 @@ public class Rocket : MonoBehaviour
 	//STATES
 	enum State { ALIVE, DEAD, TRANSENCDING }
 	State state = State.ALIVE;
+	bool collisionsDisabled = false;
 
 	// Start is called before the first frame update
 	void Start()
-    {
+	{
 		myRigidbody = GetComponent<Rigidbody>();
 		audioSource = GetComponent<AudioSource>();
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
-		if(state==State.ALIVE)
+	// Update is called once per frame
+	void Update()
+	{
+		if (Debug.isDebugBuild)
 		{
-		 Thrust();
-		 Rotate();
-		}	
+			DebugKeys();
+		}
+		
+
+		if (state == State.ALIVE)
+		{
+			Thrust();
+			Rotate();
+		}
 	}
 
 	private void Rotate()
@@ -81,7 +88,7 @@ public class Rocket : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		if(state != State.ALIVE) { return; } // so it won't get called more than 1
+		if (state != State.ALIVE || collisionsDisabled) { return; } // so it won't get called more than 1
 
 		switch (collision.gameObject.tag)
 		{
@@ -128,5 +135,17 @@ public class Rocket : MonoBehaviour
 	private void LoadFirstScene()
 	{
 		SceneManager.LoadScene(0);
+	}
+
+	private void DebugKeys()
+	{
+		if (Input.GetKeyDown(KeyCode.L))
+		{
+			LoadNextScene();
+		}
+		else if (Input.GetKeyDown(KeyCode.C))
+		{
+			collisionsDisabled = !collisionsDisabled;
+		}
 	}
 }
