@@ -54,7 +54,7 @@ public class Rocket : MonoBehaviour
 
 	private void Rotate()
 	{
-		myRigidbody.freezeRotation = true;
+		myRigidbody.angularVelocity = Vector3.zero;
 		float RotationThisFrame = rcsThrust * Time.deltaTime;
 
 		if (Input.GetKey(KeyCode.A))
@@ -66,8 +66,6 @@ public class Rocket : MonoBehaviour
 		{
 			transform.Rotate(-Vector3.forward * RotationThisFrame);
 		}
-
-		myRigidbody.freezeRotation = false;
 	}
 
 	private void Thrust()
@@ -129,7 +127,10 @@ public class Rocket : MonoBehaviour
 
 	private void LoadNextScene()
 	{
-		SceneManager.LoadScene(1);
+		int CurrentScene = SceneManager.GetActiveScene().buildIndex;
+		int nextScene = CurrentScene + 1;
+		if(nextScene == SceneManager.sceneCountInBuildSettings) { nextScene = 0; }
+		SceneManager.LoadScene(nextScene);
 	}
 
 	private void LoadFirstScene()
